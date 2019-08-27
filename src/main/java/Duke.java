@@ -1,4 +1,7 @@
 public class Duke {
+    /**
+     * To print the word Duke.
+     */
     public static void main(String[] args) {
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
