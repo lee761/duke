@@ -1,7 +1,6 @@
 import java.util.Scanner;
-import java.io.*;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.regex.Pattern;
+import java.util.ArrayList;
 
 public class Duke {
     /**
@@ -15,23 +14,29 @@ public class Duke {
                 + "|____/ \\__,_|_|\\_\\___|\n";
         System.out.println("Hello from\n" + logo);
 
-        // Level 2: Add, List
+        // Level 3: Mark as Done
         System.out.println("Hello! I'm Duke \nWhat can I do for you?");
         Scanner scan = new Scanner(System.in);
         String input = scan.nextLine();
-        String[] tasks = new String[100];
-        int x = 0;
+        ArrayList<Task> tasks = new ArrayList<>(100);
         while (!input.equals("bye")) {
-            if (input.equals("list") && tasks.length != 0) {
+            if (input.equals("list")) {
                 int count = 0;
-                for (int i = 0; i < x; i++) {
-                    System.out.println(++count + ". " + tasks[i]);
+                System.out.println("Here are the tasks in your list:");
+                for (int i = 0; i < tasks.size(); i++) {
+                    Task t = tasks.get(i);
+                    System.out.println(++count + ". [ " + t.getStatusIcon() + " ] " + t.description);
                 }
-            }
-            else {
-                tasks[x] = input;
+            } else if (input.contains("done ")) {
+                String[] taskNum = input.split(Pattern.quote(" "));
+                int num = Integer.parseInt(taskNum[1]) - 1;
+                Task doneTask = tasks.get(num);
+                doneTask.markAsDone();
+                System.out.println("Nice! I've marked this task as done: \n[ " + doneTask.getStatusIcon() + " ] " + doneTask.description);
+            } else {
+                Task todo = new Task(input);
                 System.out.println("added: " + input);
-                x = x + 1;
+                tasks.add(todo);
             }
             input = scan.nextLine();
         }
