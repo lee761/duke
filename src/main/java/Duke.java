@@ -1,6 +1,5 @@
 import java.util.Scanner;
 import java.util.regex.Pattern;
-import java.util.ArrayList;
 
 public class Duke {
     /**
@@ -18,25 +17,27 @@ public class Duke {
         System.out.println("Hello! I'm Duke \nWhat can I do for you?");
         Scanner scan = new Scanner(System.in);
         String input = scan.nextLine();
-        ArrayList<Task> tasks = new ArrayList<>(100);
+        Task[] tasks = new Task[100];
+        int x = 0;
         while (!input.equals("bye")) {
-            if (input.equals("list")) {
+            if (input.equals("list") && x != 0) {
                 int count = 0;
                 System.out.println("Here are the tasks in your list:");
-                for (int i = 0; i < tasks.size(); i++) {
-                    Task t = tasks.get(i);
-                    System.out.println(++count + ". [ " + t.getStatusIcon() + " ] " + t.description);
+                for (int i = 0; i < x; i++) {
+                    Task cmd = tasks[i];
+                    System.out.println(++count + ". [ " + cmd.getStatusIcon() + " ] " + cmd.description);
                 }
             } else if (input.contains("done ")) {
-                String[] taskNum = input.split(Pattern.quote(" "));
-                int num = Integer.parseInt(taskNum[1]) - 1;
-                Task doneTask = tasks.get(num);
-                doneTask.markAsDone();
-                System.out.println("Nice! I've marked this task as done: \n[ " + doneTask.getStatusIcon() + " ] " + doneTask.description);
+                String[] tasknum = input.split(Pattern.quote(" "));
+                int num = Integer.parseInt(tasknum[1]) - 1;
+                Task t = tasks[num];
+                t.markAsDone();
+                System.out.println("Nice! I've marked this task as done: \n[ " + t.getStatusIcon() + " ] " + t.description);
             } else {
-                Task todo = new Task(input);
+                Task newTask = new Task(input);
                 System.out.println("added: " + input);
-                tasks.add(todo);
+                tasks[x] = newTask;
+                x = x + 1;
             }
             input = scan.nextLine();
         }
