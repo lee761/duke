@@ -13,7 +13,7 @@ public class Duke {
                 + "|____/ \\__,_|_|\\_\\___|\n";
         System.out.println("Hello from\n" + logo);
 
-        // Level 3: Mark as Done
+        // Level 4: ToDos, Events, Deadlines
         System.out.println("Hello! I'm Duke \nWhat can I do for you?");
         System.out.println("__________________________________________");
         Scanner scan = new Scanner(System.in);
