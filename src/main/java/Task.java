@@ -22,4 +22,8 @@ public class Task {
     public String others() {
         return (" ");
     }
+
+    public boolean status() {
+        return isDone;
+    }
 }
