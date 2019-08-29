@@ -2,8 +2,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.ParseException;
+import java.util.Date;
 import java.util.Scanner;
 import java.util.regex.Pattern;
+import java.text.SimpleDateFormat;
 
 public class Duke {
     /**
@@ -86,10 +89,11 @@ public class Duke {
                             String[] taskTwo = c[1].split(" /by");
                             Deadline newDl = new Deadline(taskTwo[0], taskTwo[1]);
                             tasks[x] = newDl;
+                            taskTwo[1] = convertDate(taskTwo[1]);
                             newData.undoneDl(c[0].trim(), c[1].trim());
                             x = x + 1;
                             System.out.println("Got it. I've added this task: \n" + newDl.taskType() + "[" + newDl.getStatusIcon() + "] " + newDl.description + " (by:" + newDl.by + ")" + "\nNow you have " + x + " tasks in the list.");
-                        } catch (DukeException | IOException e) {
+                        } catch (DukeException | IOException | ParseException e) {
                             System.out.println(e);
                         }
                     } else if (input.contains("event")) {
@@ -99,10 +103,11 @@ public class Duke {
                             String[] taskThree = a[1].split(" /at");
                             Event newEv = new Event(taskThree[0], taskThree[1]);
                             tasks[x] = newEv;
+                            taskThree[1] = convertDate(taskThree[1]);
                             newData.undoneEvent(a[0].trim(), a[1].trim());
                             x = x + 1;
                             System.out.println("Got it. I've added this task: \n" + newEv.taskType() + "[" + newEv.getStatusIcon() + "] " + newEv.description + " (at:" + newEv.at + ")" + "\nNow you have " + x + " tasks in the list.");
-                        } catch (DukeException | IOException e) {
+                        } catch (DukeException | IOException | ParseException e) {
                             System.out.println(e);
                         }
                     }
@@ -166,5 +171,33 @@ public class Duke {
                 System.out.println(++count + ". " + type + "[" + cmd.getStatusIcon() + "] " + cmd.description + add);
             }
         }
+
+    static String convertDate(String s) throws ParseException {
+        String[] tokens = s.split(Pattern.quote("/"));
+        SimpleDateFormat sourceFormat = new SimpleDateFormat("d/MM/yyyy HHmm");
+        SimpleDateFormat targetFormatDate = new SimpleDateFormat("d");
+        SimpleDateFormat targetFormat = new SimpleDateFormat("' of' MMMM yyyy, hh:mm aa");
+        Date sourceDate = sourceFormat.parse(s);
+        String converted = targetFormatDate.format(sourceDate) + getSuffix(Integer.parseInt(tokens[0])) + targetFormat.format(sourceDate);
+        return converted;
+    }
+
+    //function to get the suffix for the date format
+    static String getSuffix(int n) {
+        if (n >= 11 && n <= 13) {
+            return "th";
+        }
+        switch (n % 10) {
+            case 1:
+                return "st";
+            case 2:
+                return "nd";
+            case 3:
+                return "rd";
+            default:
+                return "th";
+        }
+    }
 }
+
 
