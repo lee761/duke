@@ -13,11 +13,11 @@ public class Deadline extends Task{
 
     @Override
     public String others() {
-        return " (by:" + by + ")";
+        return " (by: " + by + ")";
     }
 
     public String extra() {
-        return " by:" + by;
+        return " by: " + by;
     }
 
     @Override
