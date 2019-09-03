@@ -5,6 +5,11 @@ public class ToDo extends Task{
 
     @Override
     public String taskType() {
-        return " [T]";
+        return "[T]";
+    }
+
+    @Override
+    public String saveTxt() {
+        return ("T | " + super.getStatusIcon() + " | " + super.description + "\n");
     }
 }

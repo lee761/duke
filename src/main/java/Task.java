@@ -8,7 +8,7 @@ public class Task {
     }
 
     public String getStatusIcon() {
-        return (isDone ? "\u2713" : "\u2718"); //return tick or X symbols
+        return (isDone ? "Done" : "Not Done"); //return tick or X symbols
     }
 
     public void markAsDone() {
@@ -20,6 +20,10 @@ public class Task {
     }
 
     public String others() {
+        return (" ");
+    }
+
+    public String saveTxt() {
         return (" ");
     }
 

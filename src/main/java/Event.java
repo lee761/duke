@@ -8,11 +8,20 @@ public class Event extends Task {
 
     @Override
     public String taskType() {
-        return " [E]";
+        return "[E]";
     }
 
     @Override
     public String others() {
         return " (at:" + at + ")";
+    }
+
+    public String extra() {
+        return " at:" + at;
+    }
+
+    @Override
+    public String saveTxt() {
+        return ("E | " + super.getStatusIcon() + " | " + super.description + extra() + "\n");
     }
 }
