@@ -20,7 +20,7 @@ public class Duke {
                 + "|____/ \\__,_|_|\\_\\___|\n";
         System.out.println("Hello from\n" + logo);
 
-        // Level 7: Save
+        // Level 8: Dates and Times
         System.out.println("Hello! I'm Duke \nWhat can I do for you?");
         System.out.println("__________________________________________");
         Scanner scan = new Scanner(System.in);
@@ -79,17 +79,25 @@ public class Duke {
                             String[] taskTwo = c[1].split(" /by ");
                             Deadline newDl = new Deadline(taskTwo[0], taskTwo[1]);
                             tasks[x+y] = newDl;
-                            x = x + 1;
-                            System.out.println("Got it. I've added this task: \n" + newDl.taskType() + "[" + newDl.getStatusIcon() + "] " + newDl.description + " (by: " + newDl.by + ")" + "\nNow you have " + (x + y) + " tasks in the list.");
-                            Save.saveToFile(tasks, (x + y));
+
+                            dateTime newFormat = new dateTime();
+                            newDl.by = newFormat.convert(taskTwo[1]);
+                            if (dateTime.isValidFormat(taskTwo[1])) {
+                                x = x + 1;
+                                System.out.println("Got it. I've added this task: \n" + newDl.taskType() + "[" + newDl.getStatusIcon() + "] " + newDl.description + " (by: " + newDl.by + ")" + "\nNow you have " + (x + y) + " tasks in the list.");
+                                Save.saveToFile(tasks, (x + y));
+                            }
                         } catch (DukeException e) {
                             System.out.println(e);
+                        }
+                        catch (ParseException e) {
+                            System.out.println("Wrong Date/Time format");
                         }
                     } else if (input.contains("event")) {
                         try {
                             String[] a = input.split(" ", 2);
                             DukeException.checkCmd(a);
-                            String[] taskThree = a[1].split(" /at ");
+                            String[] taskThree = a[1].split(" /at");
                             Event newEv = new Event(taskThree[0], taskThree[1]);
                             tasks[x+y] = newEv;
                             x = x + 1;
