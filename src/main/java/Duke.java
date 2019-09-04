@@ -20,7 +20,7 @@ public class Duke {
                 + "|____/ \\__,_|_|\\_\\___|\n";
         System.out.println("Hello from\n" + logo);
 
-        // Level 6: Delete
+        // Level 9: Find
         System.out.println("Hello! I'm Duke \nWhat can I do for you?");
         System.out.println("__________________________________________");
         Scanner scan = new Scanner(System.in);
@@ -76,6 +76,15 @@ public class Duke {
                     x = x - 1;
                     System.out.println("Noted. I've removed this task: \n" + type + "[" + t.getStatusIcon() + "] " + t.description + add + "\nNow you have " + (x + y) + " tasks in the list.");
                     Save.saveToFile(tasks, (x + y));
+                } else if (input.contains("find")) {
+                    int count  = 0;
+                    String[] findTask = input.split(" ");
+                    System.out.println("Here are the matching tasks in your list: \n");
+                    for (int i = 0; i < x + y; i++) {
+                        if (tasks[i].description.contains(findTask[1])) {
+                            System.out.print(++count  + ". " + tasks[i].taskType() + "[" + tasks[i].getStatusIcon() + "] " + tasks[i].description + tasks[i].others() + "\n");
+                        }
+                    }
                 } else {
                     if (input.contains("todo")) {
                         try {
