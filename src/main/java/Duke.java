@@ -20,7 +20,7 @@ public class Duke {
                 + "|____/ \\__,_|_|\\_\\___|\n";
         System.out.println("Hello from\n" + logo);
 
-        // Level 8: Dates and Times
+        // Level 6: Delete
         System.out.println("Hello! I'm Duke \nWhat can I do for you?");
         System.out.println("__________________________________________");
         Scanner scan = new Scanner(System.in);
@@ -59,6 +59,23 @@ public class Duke {
                     } catch (DukeException e) {
                         System.out.println(e);
                     }
+                } else if (input.contains("delete")) {
+                    String[] taskNum = input.split(Pattern.quote(" "));
+                    int num = Integer.parseInt(taskNum[1]) - 1;
+                    Task t = tasks[num];
+                    type = t.taskType();
+                    add = t.others();
+                    ArrayList<Task> list = new ArrayList<>();
+                    for (int k = 0; k < x + y; k++) {
+                        list.add(tasks[k]);
+                    }
+                    list.remove(num);
+                    for (int i = 0; i < list.size(); i++) {
+                        tasks[i] = list.get(i);
+                    }
+                    x = x - 1;
+                    System.out.println("Noted. I've removed this task: \n" + type + "[" + t.getStatusIcon() + "] " + t.description + add + "\nNow you have " + (x + y) + " tasks in the list.");
+                    Save.saveToFile(tasks, (x + y));
                 } else {
                     if (input.contains("todo")) {
                         try {

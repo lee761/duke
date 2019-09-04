@@ -7,7 +7,7 @@ public class DukeException extends Exception {
     }
     // To catch invalid inputs
     static void checkInput(String in) throws DukeException {
-        String[] inputs = {"todo", "deadline", "event", "list", "done"};
+        String[] inputs = {"todo", "deadline", "event", "list", "done", "delete"};
         boolean checker = false;
         for (int i = 0; i < inputs.length; i++) {
             if (in.contains(inputs[i])) {
