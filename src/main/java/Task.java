@@ -31,5 +31,3 @@ public class Task {
         return isDone;
     }
 }
-
-

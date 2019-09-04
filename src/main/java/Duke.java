@@ -25,14 +25,11 @@ public class Duke {
         System.out.println("__________________________________________");
         Scanner scan = new Scanner(System.in);
         int x = 0;
-//        Task[] tasks = new Task[100];
         System.out.println("Here are your current list of tasks:");
         save Save = new save();
-//        Save.readFile();
         Task[] tasks = Save.readFile();
         System.out.println("__________________________________________");
         String input = scan.nextLine();
-//        save saveFile = new save();
         int y = save.y;
         while (!input.equals("bye")) {
             try {
@@ -115,6 +112,3 @@ public class Duke {
         System.out.println("Bye. Hope to see you again soon!");
     }
 }
-
-
-

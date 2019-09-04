@@ -34,8 +34,6 @@ public class save {
             while (in.hasNextLine()) {
                 String a = in.nextLine();
                 String[] arr = a.split(Pattern.quote(" | "), 3);
-//                System.out.println(arr[0]);
-//                System.out.println(arr[2]);
                 if (arr[0].contains("T")) {
                     ToDo todo = new ToDo(arr[2]);
                     tasks[y] = todo;
@@ -47,8 +45,6 @@ public class save {
                 }
                 else if (arr[0].contains("D")) {
                     String[] temp_arr = arr[2].split(Pattern.quote("by:"));
-//                    System.out.println(temp_arr[0]);
-//                    System.out.println(temp_arr[1]);
                     Deadline Dl = new Deadline(temp_arr[0], temp_arr[1]);
                     tasks[y] = Dl;
                     if (arr[1].contains("✘")) {
@@ -75,5 +71,3 @@ public class save {
         return tasks;
     }
 }
-
-
