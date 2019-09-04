@@ -13,11 +13,11 @@ public class Event extends Task {
 
     @Override
     public String others() {
-        return " (at:" + at + ")";
+        return " (at: " + at + ")";
     }
 
     public String extra() {
-        return " at:" + at;
+        return " at: " + at;
     }
 
     @Override

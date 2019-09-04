@@ -39,19 +39,19 @@ public class save {
                 if (arr[0].contains("T")) {
                     ToDo todo = new ToDo(arr[2]);
                     tasks[y] = todo;
-                    if (arr[1].contains("Not Done")) {
+                    if (arr[1].contains("✘")) {
                         todo.isDone = false;
                     } else {
                         todo.markAsDone();
                     }
                 }
-                 else if (arr[0].contains("D")) {
+                else if (arr[0].contains("D")) {
                     String[] temp_arr = arr[2].split(Pattern.quote("by:"));
 //                    System.out.println(temp_arr[0]);
 //                    System.out.println(temp_arr[1]);
                     Deadline Dl = new Deadline(temp_arr[0], temp_arr[1]);
                     tasks[y] = Dl;
-                    if (arr[1].contains("Not Done")) {
+                    if (arr[1].contains("✘")) {
                         Dl.isDone = false;
                     } else {
                         Dl.markAsDone();
@@ -61,7 +61,7 @@ public class save {
                     String[] temp_arr = arr[2].split(Pattern.quote("at:"));
                     Event Ev = new Event(temp_arr[0], temp_arr[1]);
                     tasks[y] = Ev;
-                    if (arr[1].contains("Not Done")) {
+                    if (arr[1].contains("✘")) {
                         Ev.isDone = false;
                     } else {
                         Ev.markAsDone();
