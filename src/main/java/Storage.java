@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-public class save {
+public class Storage {
     public static int y;
 
-    public save() {
+    public Storage() {
     }
 
     void saveToFile(Task[] tasks, int x) {
