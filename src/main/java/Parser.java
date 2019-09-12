@@ -9,7 +9,9 @@ public class Parser {
         this.tasklist = tasklist;
         this.ui = ui;
     }
-
+    /*
+     * To understand what they input command is
+     */
     public void parse(String input, int y) {
         ui.line();
         if (input.equals("list")) {

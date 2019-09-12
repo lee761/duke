@@ -12,6 +12,9 @@ public class Storage {
     public Storage() {
     }
 
+    /*
+     * To save the list into local file
+     */
     void saveToFile(Task[] tasks, int x) {
         try {
             File file = new File("D:\\data\\duke.txt");
@@ -26,6 +29,9 @@ public class Storage {
         }
     }
 
+    /*
+     * To read local text file and put it into a task array
+     */
     Task[] readFile() throws FileNotFoundException {
         Scanner in = new Scanner(new File("D:\\data\\duke.txt"));
         Task[] tasks = new Task[100];

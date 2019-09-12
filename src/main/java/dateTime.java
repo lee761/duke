@@ -8,6 +8,9 @@ public class dateTime {
     public dateTime() {
     }
 
+    /*
+     * To convert date and time of one format to another
+     */
     String convert(String in) throws ParseException {
         SimpleDateFormat inputFormat = new SimpleDateFormat("dd/MM/yyyy HHmm");
         Date date = inputFormat.parse(in);
@@ -16,6 +19,9 @@ public class dateTime {
         return output.format(date) + suffix(in) + outputFormat.format(date);
     }
 
+    /*
+     * To get the suffix according to the date
+     */
     private String suffix(String d) {
         String[] arr = d.split(Pattern.quote("/"));
         int n = Integer.parseInt(arr[0]);
@@ -30,6 +36,9 @@ public class dateTime {
         }
     }
 
+    /*
+     * Check if input date format is valid
+     */
     static boolean isValidFormat(String value) {
         Date date = null;
         try {

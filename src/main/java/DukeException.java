@@ -5,7 +5,9 @@ public class DukeException extends Exception {
     public DukeException(String error) {
         super(error);
     }
-    // To catch invalid inputs
+    /*
+     * To catch invalid input or empty input
+     */
     static void checkInput(String in) throws DukeException {
         String[] inputs = {"todo", "deadline", "event", "list", "done", "delete", "find"};
         boolean checker = false;
@@ -22,7 +24,9 @@ public class DukeException extends Exception {
         }
     }
 
-    // To catch invalid "done" task
+    /*
+     * To catch invalid/completed task done
+     */
     static void checkTask(Task[] Ta, int x, int size) throws DukeException {
         if (x >= size || x < 0) {
             throw new DukeException("☹ OOPS!!! There is no such task to be done. Please enter a valid task number.");
