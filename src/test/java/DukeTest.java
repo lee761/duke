@@ -1,8 +1,10 @@
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class DukeTest {
-    /**
-     * For testing.
-     */
-    public static void main(String[] args) {
-        System.out.println("Hello Duke");
+    @Test
+    public void dummyTest(){
+        assertEquals(2, 2);
     }
 }

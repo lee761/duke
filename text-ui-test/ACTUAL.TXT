@@ -7,8 +7,12 @@ Hello from
 
 Hello! I'm Duke 
 What can I do for you?
-__________________________________________
 Here are your current list of tasks:
+__________________________________________
+1. T | ✘ | run
+2. D | ✘ | return book   by:   11th September 2019 09:53 AM
+3. D | ✘ | return book  by:  11th September 2019 09:53 AM
+4. D | ✘ | return book by: 11th September 2019 09:53 AM
 __________________________________________
 __________________________________________
 Bye. Hope to see you again soon!
